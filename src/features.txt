@@ -1,0 +1,42 @@
+1 . tao nhat ki : 
+-  khong cho thieu title hoac thieu thieu content(image)
+- cam xuc : hanh phuc ,vui ve,vui ,trung binh , buon chan , buc boi , uc che
+- them image
+- render content : content + image ( content dang array)
+- update form 
+- update css
+- them noi dung trang bat dau( khi chua co noi dung)
+- them tinh nang chon ngay
+- sua mood thanh hinh anh
+- css item
+- design home page without content
+2 . lich su nhat ki ( trang quan li)
+- css lai sao cho bat mat
+3 . trang tung nhat ki ( sua xoa nhat ki) ...routews
+- tinh nang : sua xoa nhat ki
+4 . viet tung chuong truyen cho minh
+- Y tuong : Chuong truyen ( dau moc cua con nguoi): luc nho ->bi bo me hanh ha hoac song trong cuoc doi co cuc,... len dai hoc -> bi ban be bat nat....
+- Van co cac tinh nang CRUD... tao them routes truyen
+5 . viet ve nhung nguoi xung quanh minh : giai doan-> thong ke cam xuc
+- Tao nhan vat muon viet ve ,  => no da lam abc gi do voi toi=> cam xuc( feature )
+6 . password
+7 . sang toi
+8 . thong ke cam xuc - nhieu y tuong( theo ngay , theo so luong cam xuc , %sl cam xuc,....)
+9 . khoanh khac dang nho ( di du lich abc, co bo ten xyz ,...)
+10 . galery anh : xem anh minh luu ,... , qua trinh tien hoa cua minh
+11 . tao ki niem : ngay x,y,x la yeu anh abc.....,countdown : bn ngay nua la den tet ,...., or so ngay yeu nhau
+12 . ngay nay nam ngoai ( n=ban da tung lam nhung gi)
+13 . tong ket thang : thang nay ban lam duoc nhung gi va quen biet duoc nhung ai va .....-> lich su thang
+
+* Back end : cong dong .....
+
+
+
+
+Create - form submit va luu tat ca vao storage
+R - lay du lieu tu storage tra ra giao dien
+D - nut xoa du lieu
+U - sua du lieu
+
+setting - password + light/dark
+css 

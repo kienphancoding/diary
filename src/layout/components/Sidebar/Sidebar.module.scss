@@ -1,0 +1,35 @@
+.wrapper {
+  height: 100vh;
+  background-color: brown;
+  position: fixed;
+  width: var(--width-sidebar);
+  padding: 10px;
+  // overflow: scroll;
+  z-index: 100;
+}
+
+.link {
+  display: flex;
+  padding: 10px 0;
+  &::after {
+    content: attr(data);
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 25px;
+    height: 30px;
+    display: none;
+  }
+}
+
+.icon {
+  --radius: 30px;
+  width: var(--radius);
+  height: var(--radius);
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+}

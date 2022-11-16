@@ -1,0 +1,6 @@
+.wrapper {
+  width: calc(100vw - var(--width-sidebar));
+  max-width: calc(100vw - var(--width-sidebar));
+  overflow: none;
+  height: 80vh;
+}

@@ -1,0 +1,48 @@
+.wrapper {
+  margin-left: var(--width-sidebar);
+  top: 0;
+  position: fixed;
+  background-color: #fff;
+  z-index: 99;
+  width: calc(100vw - var(--width-sidebar));
+  // height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+
+  padding: 0 auto;
+  input {
+    font-size: 30px;
+    padding: 25px 20px;
+    height: 40px;
+    width: 96%;
+    font-weight: 600;
+    border-radius: 10px;
+  }
+  textarea {
+    width: 96%;
+    height: 300px;
+    font-size: 25px;
+    border-radius: 10px;
+    padding: 25px 20px;
+  }
+  .moods {
+    display: flex;
+    flex-direction: row;
+    .moodItem {
+      padding: 10px;
+      font-size: 25px;
+      cursor: pointer;
+      &:hover{
+        border: 1px solid black ;
+      }
+    }
+  }
+  button {
+    font-size: 30px;
+    font-weight: 600;
+    padding: 5px 20px;
+  }
+}

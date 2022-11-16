@@ -1,0 +1,44 @@
+
+
+
+.time{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 70px;
+  background-color: aqua;
+  margin-right: 20px;
+  height: 70px;
+  padding: 10px;
+  border-radius: 5px;
+  .date{
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+    height: 35px;
+  }
+  .month{
+    font-size: 30px;
+    font-weight: 600;
+    height: 35px;
+    text-align: center;
+  }
+}
+
+.title{
+  font-size: 30px;
+  font-weight: 600;
+  max-height: 70px;
+  overflow: hidden;
+  background-color: aqua;
+  padding: 0 20px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.content{
+  background-color: aqua;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 23px;
+}
