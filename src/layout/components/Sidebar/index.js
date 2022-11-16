@@ -11,6 +11,7 @@ import {
   faHouse,
   faImage,
   faMemory,
+  faPeopleArrows,
   faSquarePlus,
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
@@ -26,6 +27,7 @@ const Sidebar = () => {
     { path: "/static", name: "Thong ke", icon: faChartColumn },
     { path: "/chapter", name: "Tu truyen", icon: faBook },
     { path: "/memory", name: "Ki niem", icon: faMemory },
+    { path: "/character", name: "Nhan vat", icon: faPeopleArrows },
     {
       path: "/create",
       name: "Tao trang",

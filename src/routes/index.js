@@ -2,12 +2,19 @@ import Home from "../pages/Home";
 import Static from "../pages/Static";
 import Galery from "../pages/Galery";
 import Chapter from "../pages/Chapter";
+import Memory from "../pages/Memory";
+import Momment from "../pages/Momment";
+import Character from "../pages/Character";
 
 let routes = [
   { path: "/", component: Home },
   { path: "/static", component: Static },
   { path: "/galery", component: Galery },
   { path: "/chapter", component: Chapter },
+  { path: "/memory", component: Memory },
+  { path: "/character", component: Character },
+  { path: "/momment", component: Momment },
+  { path: "*", component: Home },
 ];
 
 const diary = JSON.parse(localStorage.getItem("diary")) ?? [
@@ -15,6 +22,10 @@ const diary = JSON.parse(localStorage.getItem("diary")) ?? [
 ];
 
 const chapter = JSON.parse(localStorage.getItem("chapter")) ?? [
+  { title:"",content:"" },
+];
+
+const characters = JSON.parse(localStorage.getItem("characters")) ?? [
   { title:"",content:"" },
 ];
 
@@ -53,7 +64,14 @@ let tempChapter = chapter.map((x,index)=>{
   }
 })
 
-routes = [...routes, ...tempRoutes,...tempChapter];
+let tempCharacters = characters.map((x,index)=>{
+  return{
+    path:`characters${index+1}`,
+    component:Character
+  }
+})
+
+routes = [...routes, ...tempRoutes,...tempChapter,...tempCharacters];
 
 // console.log(headerItems);
 
