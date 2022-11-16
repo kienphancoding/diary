@@ -10,24 +10,28 @@ let routes = [
   { path: "/chapter", component: Chapter },
 ];
 
-const content = JSON.parse(localStorage.getItem("diary")) ?? [
+const diary = JSON.parse(localStorage.getItem("diary")) ?? [
   { month: new Date().getMonth() + 1, year: new Date().getFullYear },
+];
+
+const chapter = JSON.parse(localStorage.getItem("chapter")) ?? [
+  { title:"",content:"" },
 ];
 
 const headerItems = () => {
   let headerArray = [
     {
-      month: content[0].month,
-      year: content[0].year,
+      month: diary[0].month,
+      year: diary[0].year,
     },
   ];
-  for (let i = 1; i < content.length; i++) {
-    if (content[i].month !== headerArray[headerArray.length - 1].month) {
+  for (let i = 1; i < diary.length; i++) {
+    if (diary[i].month !== headerArray[headerArray.length - 1].month) {
       headerArray = [
         ...headerArray,
         {
-          month: content[i].month,
-          year: content[i].year,
+          month: diary[i].month,
+          year: diary[i].year,
         },
       ];
     }
@@ -42,7 +46,14 @@ let tempRoutes = headerItems().map((x) => {
   };
 });
 
-routes = [...routes, ...tempRoutes];
+let tempChapter = chapter.map((x,index)=>{
+  return{
+    path:`chapter${index+1}`,
+    component:Chapter
+  }
+})
+
+routes = [...routes, ...tempRoutes,...tempChapter];
 
 // console.log(headerItems);
 

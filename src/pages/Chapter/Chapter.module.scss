@@ -1,0 +1,24 @@
+.item {
+    display: flex;
+    flex-direction: row;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+      rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+    padding: 15px;
+    margin: 10px;
+  }
+  
+  .header {
+    display: flex;
+    overflow: initial;
+    overflow-y: hidden;
+    margin-bottom: 20px;
+    &::-webkit-scrollbar{
+      height: 5px;
+      border-radius: 10px;
+      background-color: brown;
+    }
+    &::-webkit-scrollbar-thumb{
+      border-radius: 10px;
+      background-color: black;
+    }
+  }

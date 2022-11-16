@@ -9,7 +9,6 @@ const CreateChapter = () => {
   useEffect(() => {
     inputRef.current.focus();
   }, [title]);
-  // const [contents,setContents] = useState([])
 
   const handleSubmit=()=>{
     if (!!localStorage.getItem("chapter")) {
@@ -42,7 +41,7 @@ const CreateChapter = () => {
     <div className={clsx(style.wrapper)}>
       <input
         type="text"
-        placeholder="Nhập cột mốc"
+        placeholder="Nhập giai đoạn và nó ảnh hưởng tới bạn ntn?"
         value={title ===""?"":title[0].toUpperCase().concat(title.slice(1))}
         onChange={(e) => setTitle(e.target.value)}
         spellCheck="false"
@@ -53,7 +52,7 @@ const CreateChapter = () => {
         value={content}
         onChange={(e) => setContent(e.target.value)}
         spellCheck="false"
-        placeholder="Nhập nội dung"
+        placeholder="Ví dụ : thời đi học , thời sinh viên hay lúc làm cha mẹ,...."
       ></textarea>
       <button
         onClick={handleSubmit}

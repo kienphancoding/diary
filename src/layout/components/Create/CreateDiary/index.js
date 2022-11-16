@@ -15,7 +15,7 @@ const CreateDiary = () => {
     <div className={clsx(style.wrapper)}>
       <input
         type="text"
-        placeholder="Nhập tiêu đề"
+        placeholder="Ngày hôm nay của bạn như thế nào?"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         spellCheck="false"

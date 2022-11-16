@@ -42,7 +42,7 @@ const CreateMemory = () => {
     <div className={clsx(style.wrapper)}>
       <input
         type="text"
-        placeholder="Nhập cột mốc"
+        placeholder="Nhập cột mốc trong đời bạn?"
         value={
           title === "" ? "" : title[0].toUpperCase().concat(title.slice(1))
         }
@@ -55,7 +55,7 @@ const CreateMemory = () => {
         value={content}
         onChange={(e) => setContent(e.target.value)}
         spellCheck="false"
-        placeholder="Nhập nội dung"
+        placeholder="Ví dụ : lúc bạn đỗ ĐH sẽ ntn?hay kênh youtube đạt 100 sub ,...."
       ></textarea>
       <button onClick={handleSubmit}>OK</button>
     </div>
