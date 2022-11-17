@@ -5,29 +5,30 @@ import ContentHome from "./ContentHome";
 import HeaderHome from "./HeaderHome";
 
 const Home = () => {
-  const path = window.location.pathname
+  const path = window.location.pathname;
 
-  const noPath = path.split("/").join("")
+  const noPath = path.split("/").join("");
 
-  let month = ()=>{
-    if(noPath.length===6){
-      return Number(noPath.substring(0,2))
-    }else{
-      return Number(noPath.substring(0,1))
+  let month = () => {
+    if (noPath.length === 6) {
+      return Number(noPath.substring(0, 2));
+    } else {
+      return Number(noPath.substring(0, 1));
     }
-  }
+  };
 
-  let year = ()=>{
-    if(noPath.length===6){
-      return Number(noPath.substring(2,6))
-    }else{
-      return Number(noPath.substring(1,5))
-    }}
+  let year = () => {
+    if (noPath.length === 6) {
+      return Number(noPath.substring(2, 6));
+    } else {
+      return Number(noPath.substring(1, 5));
+    }
+  };
   return (
     <div className={clsx(style.wrapper)}>
-      <HeaderHome/>
+      <HeaderHome />
 
-      <ContentHome month={month()} year={year()}/>
+      <ContentHome month={month()} year={year()} />
     </div>
   );
 };

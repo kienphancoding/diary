@@ -33,10 +33,16 @@
 
 
 
-Create - form submit va luu tat ca vao storage
-R - lay du lieu tu storage tra ra giao dien
-D - nut xoa du lieu
+Create - form submit va luu tat ca vao storage - ok
+R - lay du lieu tu storage tra ra giao dien - ok
+D - nut xoa du lieu 
 U - sua du lieu
 
 setting - password + light/dark
 css 
+
+
+- css form
+- css read
+- css khong co du lieu
+- css sidebar

@@ -1,8 +1,18 @@
 .item {
-    display: flex;
-    flex-direction: row;
-    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
-      rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
-    padding: 15px;
-    margin: 10px;
-  }
+  display: flex;
+  flex-direction: row;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+  padding: 15px;
+  margin: 10px;
+}
+
+.btn{
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background-color: bisque;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

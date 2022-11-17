@@ -3,7 +3,7 @@ import clsx from "clsx";
 import style from "./HeaderHome.module.scss";
 
 const HeaderHome = () => {
-  const content = JSON.parse(localStorage.getItem("diary")) ?? [];
+  const content = JSON.parse(localStorage.getItem("diary"))??[{month:new Date().getMonth()+1,year:new Date().getFullYear()}];
 
   let headerItems = () => {
     let headerArray = [

@@ -24,27 +24,28 @@ const Sidebar = () => {
   const [content, setContent] = useState();
   const list = [
     { path: "/", name: "Trang chủ", icon: faHouse },
-    { path: "/static", name: "Thong ke", icon: faChartColumn },
-    { path: "/chapter", name: "Tu truyen", icon: faBook },
-    { path: "/memory", name: "Ki niem", icon: faMemory },
-    { path: "/character", name: "Nhan vat", icon: faPeopleArrows },
+    { path: "/chapter", name: "Tự truyện", icon: faBook },
+    { path: "/memory", name: "Kỉ niệm", icon: faMemory },
+    { path: "/momment", name: "Khoảnh khắc", icon: faStar },
+    { path: "/character", name: "Nhân vật", icon: faPeopleArrows },
     {
       path: "/create",
-      name: "Tao trang",
+      name: "Viết nhật kí",
       icon: faSquarePlus,
       content: "create",
       component: Create,
     },
+    { path: "/static", name: "Thống kê", icon: faChartColumn },
     {
       path: "/thisdaylastyear",
-      name: "Ngày này năm ngoái",
+      name: "Ngày này năm trước",
       icon: faCalendar,
     },
-    { path: "/momment", name: "Khoảnh khắc", icon: faStar },
+    
     { path: "/galery", name: "Thư viện", icon: faImage },
     {
       path: "/setting",
-      name: "Cai dat",
+      name: "Cài đặt",
       icon: faGear,
       content: "settings",
       component: Settings,
@@ -53,7 +54,7 @@ const Sidebar = () => {
 
   return (
     <div className={clsx(style.wrapper)}>
-      <Link to="/" className={clsx(style.link)}>
+      <Link to="/" className={clsx(style.linkHome)}>
         <FontAwesomeIcon className={clsx(style.icon)} icon={faBookDead} />
       </Link>
       {list.map((x, index) => {
@@ -63,6 +64,7 @@ const Sidebar = () => {
             key={index}
             className={clsx(style.link)}
             data={x.name}
+            style={window.location.pathname===x.path?{backgroundColor:"black",color:"#fff"}:{}}
           >
             <FontAwesomeIcon className={clsx(style.icon)} icon={x.icon} />
           </Link>

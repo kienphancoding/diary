@@ -1,13 +1,17 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import clsx from "clsx";
 import style from "./ContentHome.module.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 
-const ContentHome = ({ month , year }) => {
-  const content = JSON.parse(localStorage.getItem("diary")) ?? [];
+const ContentHome = ({ month, year }) => {
+  const [item, setItem] = useState(() => {
+    return JSON.parse(localStorage.getItem("diary")) ?? [];
+  });
 
   return (
     <div>
-      {content.map((x, index) => {
+      {item.map((x, index) => {
         if (Number(x.month) === month && Number(x.year) === year) {
           return (
             <div
@@ -19,6 +23,28 @@ const ContentHome = ({ month , year }) => {
                 <div>{x.date}</div>
                 <div>{x.title}</div>
                 <div>{x.mood}</div>
+                <div>
+                  <FontAwesomeIcon icon={faPenToSquare} />
+                </div>
+                <div
+                  onClick={() => {
+                    const storage = JSON.parse(localStorage.getItem("diary"));
+                    const a1 = storage.slice(0, index);
+                    const a2 = storage.slice(index + 1, storage.length);
+                    const new_arr = a1.concat(a2);
+
+                    setItem(new_arr);
+
+                    const storageJson = JSON.stringify(new_arr);
+                    localStorage.setItem("diary", storageJson);
+                    if (item.length === 1) {
+                      localStorage.removeItem("diary");
+                    }
+                  }}
+                  className={clsx(style.btn)}
+                >
+                  <FontAwesomeIcon icon={faTrash} />
+                </div>
               </div>
               <div>{x.content}</div>
             </div>

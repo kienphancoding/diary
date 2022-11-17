@@ -1,35 +1,104 @@
 .wrapper {
   height: 100vh;
-  background-color: brown;
+  background-color: #fff;
   position: fixed;
   width: var(--width-sidebar);
-  padding: 10px;
-  // overflow: scroll;
   z-index: 100;
+  border-right: 1px solid gray;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.linkHome {
+  --radius: 40px;
+  width: var(--radius);
+  height: var(--radius);
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  margin: 5px 0;
 }
 
 .link {
+  --radius: 40px;
+  width: var(--radius);
+  height: var(--radius);
+  border-radius: 50px;
   display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 10px 0;
+  margin: 5px 0;
   &::after {
     content: attr(data);
     font-size: 20px;
-    font-weight: 500;
-    margin-left: 25px;
+    font-weight: 600;
+    margin-left: 60px;
     height: 30px;
+    position: fixed;
+    left: 0;
+    display: none;
+    background-color: #fff;
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid gray;
+  }
+  &:hover {
+    &::after {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: showTitle 2s;
+    }
+  }
+}
+@keyframes showTitle {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@media (max-width: 770px) {
+  .wrapper {
+    width: 100vw;
+    position: fixed;
+    height: var(--width-sidebar);
+    border-top: 1px solid gray;
+    border-right: none;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    bottom: 0;
+  }
+  .link{
+    &:hover {
+      &::after {
+        display: none;
+      }
+    }
+  }
+  .linkHome{
     display: none;
   }
 }
 
 .icon {
-  --radius: 30px;
-  width: var(--radius);
-  height: var(--radius);
-  font-size: 40px;
-  cursor: pointer;
-}
-
-.icon {
   display: flex;
   align-items: center;
+  // --radius: 30px;
+  // width: var(--radius);
+  // height: var(--radius);
+  font-size: 20px;
+  cursor: pointer;
+  &:hover {
+    font-size: 22px;
+  }
 }
