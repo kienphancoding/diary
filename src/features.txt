@@ -46,3 +46,5 @@ css
 - css read
 - css khong co du lieu
 - css sidebar
+
+- xu li form ( title khong qua bao nhieu chu , khong duoc thieu noi dung(de trong),ten rieng no se tu viet hoa no co dau cach)

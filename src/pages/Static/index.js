@@ -47,7 +47,7 @@ const Static = () => {
           <YAxis />
           <Tooltip />
           <CartesianGrid strokeDasharray="3 3" />
-          <Bar dataKey="count" fill="#8884d8" background={{ fill: '#eee' }} />
+          <Bar dataKey="count" fill="#000" background={{ fill: '#eee' }} />
         </BarChart>
       </ResponsiveContainer>
     </div>

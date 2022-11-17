@@ -1,7 +1,45 @@
 .wrapper{
     display: flex;
+    overflow: auto;
+    // overflow-x: scroll;
+    // overflow-y: hidden;
+    width: calc(100vw - var(--width-sidebar));
+    &::-webkit-scrollbar{
+        background-color: gray;
+        height: 5px;
+    }
+    &::-webkit-scrollbar-thumb{
+        background-color: black;
+    }
     img{
         width: 120px;
-        height: 120px;
+        height: 140px;
     }
+}
+
+.link{
+    width: 140px;
+    padding: 10px;
+    box-shadow: rgb(45 35 66 / 40%) 0 2px 4px, rgb(45 35 66 / 30%) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+    margin: 10px;
+    &:focus {
+        box-shadow: #d6d6e7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px,
+          rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+      }
+      &:hover {
+        box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
+          rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+        transform: translateY(-2px);
+      }
+      &:active {
+        box-shadow: #d6d6e7 0 3px 7px inset;
+        transform: translateY(2px);
+      }
+}
+
+.name{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 20px;
+    font-weight: 600;
 }

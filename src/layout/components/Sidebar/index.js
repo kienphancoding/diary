@@ -96,7 +96,7 @@ const Sidebar = () => {
             show &&
             content === x.content && (
               <div key={index}>
-                <Element />
+                <Element setShow={setShow}/>
               </div>
             )
           );

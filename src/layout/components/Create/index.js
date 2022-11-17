@@ -1,11 +1,12 @@
 import clsx from "clsx";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import style from "./Create.module.scss";
 import CreateChapter from "./CreateChapter";
 import CreateDiary from "./CreateDiary";
 import CreateMemory from "./CreateMemory";
 import CreateMomment from "./CreateMomment";
 import CreatePeople from "./CreatePeople";
+import useOnClickOutside from "../../../hooks/useOnClickOutside"
 
 export const moods = [
   "Bình thường",
@@ -16,9 +17,10 @@ export const moods = [
   "Chán ghét",
 ];
 
-const Create = () => {
+const Create = ({setShow}) => {
+  const ref = useRef()
   
-  
+  useOnClickOutside(ref, () => setShow(false))
   const elements = [
     { name: "Nhật kí hôm nay",component:CreateDiary },
     { name: "Tự truyện",component:CreateChapter },
@@ -30,7 +32,7 @@ const Create = () => {
 
   
   return (
-    <div className={clsx(style.wrapper)}>
+    <div ref={ref} className={clsx(style.wrapper)}>
       <div style={{display:"flex"}} className={clsx(style.moods)}>
       {elements.map((x, index) => {
         return (

@@ -1,25 +1,63 @@
 .item {
-    display: flex;
-    flex-direction: row;
-    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+  display: flex;
+  flex-direction: row;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+  padding: 15px;
+  margin: 10px;
+}
+
+.header {
+  display: flex;
+  overflow: initial;
+  overflow-y: hidden;
+  margin-bottom: 20px;
+  &::-webkit-scrollbar {
+    height: 5px;
+    border-radius: 10px;
+    background-color: brown;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: black;
+  }
+}
+
+
+.btn{
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  background-color: #fcfcfd;
+  justify-content: center;
+  align-items: center;
+  transition: box-shadow 0.15s, transform 0.15s;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+  &:focus {
+    box-shadow: #d6d6e7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px,
       rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
-    padding: 15px;
-    margin: 10px;
   }
-  
-  .header {
-    display: flex;
-    overflow: initial;
-    overflow-y: hidden;
-    margin-bottom: 20px;
-    &::-webkit-scrollbar {
-      height: 5px;
-      border-radius: 10px;
-      background-color: brown;
-    }
-    &::-webkit-scrollbar-thumb {
-      border-radius: 10px;
-      background-color: black;
-    }
+  &:hover {
+    box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
+      rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+    transform: translateY(-2px);
   }
-  
+  &:active {
+    box-shadow: #d6d6e7 0 3px 7px inset;
+    transform: translateY(2px);
+  }
+}
+
+.title,.content{
+  &::selection{
+    background-color: black;
+    color:white;
+  }
+}
+.content{
+  font-size: 25px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

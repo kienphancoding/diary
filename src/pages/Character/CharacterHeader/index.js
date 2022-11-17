@@ -9,12 +9,13 @@ const CharacterHeader = () => {
         <div className={clsx(style.wrapper)}>
             {content.map((x,index)=>{
                 return(
-                    <Link to={`/characters${index+1}`} key={index}>
+                    <Link className={clsx(style.link)} to={`/characters${index+1}`} key={index}>
                         <img src={x.linkImage} alt=""/>
-                        <p>{x.nickname}</p>
+                        <p className={clsx(style.name)}>{x.nickname}</p>
                     </Link>
                 )
             })}
+            
         </div>
     );
 }
