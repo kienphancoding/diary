@@ -2,24 +2,30 @@ import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
 import style from "./Memory.module.scss";
+import { useState } from "react";
 
 const Memory = () => {
+  const [item, setItem] = useState(() => {
+    return JSON.parse(localStorage.getItem("memories")) ?? [];
+  });
   return (
     <div className={clsx(style.wrapper)}>
-      {!!localStorage.getItem("memories") &&<h1
-      className={clsx(style.title)}
-        style={{
-          padding: "20px 30px",
-          margin: "10px 30px",
-          textAlign: "center",
-          boxShadow:
-            "rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset",
-        }}
-      >
-        Cột mốc quan trọng trong cuộc đời tôi
-      </h1>}
+      {!!localStorage.getItem("memories") && (
+        <h1
+          className={clsx(style.title)}
+          style={{
+            padding: "20px 30px",
+            margin: "10px 30px",
+            textAlign: "center",
+            boxShadow:
+              "rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset",
+          }}
+        >
+          Cột mốc quan trọng trong cuộc đời tôi
+        </h1>
+      )}
       {!!localStorage.getItem("memories") &&
-        JSON.parse(localStorage.getItem("memories")).map((x, index) => {
+        item.map((x, index) => {
           return (
             <div
               key={index}
@@ -36,7 +42,25 @@ const Memory = () => {
                   <div className={clsx(style.btn)}>
                     <FontAwesomeIcon icon={faPenToSquare} />
                   </div>
-                  <div className={clsx(style.btn)}>
+                  <div
+                    onClick={() => {
+                      const storage = JSON.parse(
+                        localStorage.getItem("memories")
+                      );
+                      const a1 = storage.slice(0, index);
+                      const a2 = storage.slice(index + 1, storage.length);
+                      const new_arr = a1.concat(a2);
+
+                      setItem(new_arr);
+
+                      const storageJson = JSON.stringify(new_arr);
+                      localStorage.setItem("memories", storageJson);
+                      if (item.length === 1) {
+                        localStorage.removeItem("memories");
+                      }
+                    }}
+                    className={clsx(style.btn)}
+                  >
                     <FontAwesomeIcon icon={faTrash} />
                   </div>
                 </div>

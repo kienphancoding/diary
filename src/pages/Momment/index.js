@@ -2,8 +2,12 @@ import clsx from "clsx";
 import style from "./Momment.module.scss";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
 
 const Momment = () => {
+  const [item, setItem] = useState(() => {
+    return JSON.parse(localStorage.getItem("mommnent")) ?? [];
+  });
   return (
     <div className={clsx(style.wrapper)}>
       {!!localStorage.getItem("momment") && (
@@ -38,7 +42,25 @@ const Momment = () => {
                   <div className={clsx(style.btn)}>
                     <FontAwesomeIcon icon={faPenToSquare} />
                   </div>
-                  <div className={clsx(style.btn)}>
+                  <div
+                    className={clsx(style.btn)}
+                    onClick={() => {
+                      const storage = JSON.parse(
+                        localStorage.getItem("momment")
+                      );
+                      const a1 = storage.slice(0, index);
+                      const a2 = storage.slice(index + 1, storage.length);
+                      const new_arr = a1.concat(a2);
+
+                      setItem(new_arr);
+
+                      const storageJson = JSON.stringify(new_arr);
+                      localStorage.setItem("momment", storageJson);
+                      if (item.length === 1) {
+                        localStorage.removeItem("momment");
+                      }
+                    }}
+                  >
                     <FontAwesomeIcon icon={faTrash} />
                   </div>
                 </div>
