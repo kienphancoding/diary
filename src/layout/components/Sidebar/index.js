@@ -4,7 +4,6 @@ import style from "./Sidebar.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBook,
-  faBookDead,
   faCalendar,
   faChartColumn,
   faGear,
@@ -18,6 +17,7 @@ import {
 import { useState } from "react";
 import Create from "../Create";
 import Settings from "../Settings";
+import Logo from "./logo192.png"
 
 const Sidebar = () => {
   const [show, setShow] = useState(false);
@@ -55,7 +55,7 @@ const Sidebar = () => {
   return (
     <div className={clsx(style.wrapper)}>
       <Link to="/" className={clsx(style.linkHome)}>
-        <FontAwesomeIcon className={clsx(style.icon)} icon={faBookDead} />
+        <img width={40} src={Logo} style={{borderRadius:"100px"}} alt="logo" />
       </Link>
       {list.map((x, index) => {
         return !x.content ? (

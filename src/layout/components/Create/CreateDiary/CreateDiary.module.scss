@@ -1,28 +1,23 @@
 .wrapper {
-//   margin-left: var(--width-sidebar);
-  top: 0;
-//   position: fixed;
-  background-color: #fff;
+  // margin-top: 20px;
   z-index: 99;
-  width: calc(100vw - var(--width-sidebar));
-//   height: 100vh;
-
-  display: flex;
+  width: 100%;
+  overflow: auto;
+  // display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: flex-start;
-
-  padding: 0 auto;
+  // align-items: flex-start;
+  // padding: 10px 30px;
   input {
     font-size: 30px;
     padding: 25px 20px;
     height: 40px;
-    width: 96%;
+    width: 100%;
     font-weight: 600;
     border-radius: 10px;
   }
   textarea {
-    width: 96%;
+    width: 100%;
     height: 300px;
     font-size: 25px;
     border-radius: 10px;
@@ -35,8 +30,10 @@
       padding: 10px;
       font-size: 25px;
       cursor: pointer;
+      border-radius: 20px;
       &:hover {
-        border: 1px solid black;
+        background-color: black;
+        color: white;
       }
     }
   }
@@ -44,5 +41,23 @@
     font-size: 30px;
     font-weight: 600;
     padding: 5px 20px;
+    width: 100%;
+    border: 2px solid #1a1a1a;
+    background-color: #fff;
+    &:disabled {
+      pointer-events: none;
+    }
+
+    &:hover {
+      color: #fff;
+      background-color: #1a1a1a;
+      box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      box-shadow: none;
+      transform: translateY(0);
+    }
   }
 }

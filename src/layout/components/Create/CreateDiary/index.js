@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import style from "./CreateDiary.module.scss";
 import { moods } from "../../Create";
-import { useState,useEffect, useRef} from "react";
+import { useState, useEffect, useRef } from "react";
 
 const CreateDiary = () => {
   const [title, setTitle] = useState("");
@@ -11,12 +11,54 @@ const CreateDiary = () => {
   useEffect(() => {
     inputRef.current.focus();
   }, [title]);
+
+  const handleSubmit = () => {
+    if (title.trim() !== "" && content.trim() !== "") {
+      if (!!localStorage.getItem("diary")) {
+        localStorage.setItem(
+          "diary",
+          JSON.stringify([
+            ...JSON.parse(localStorage.getItem("diary")),
+            {
+              date: new Date().getDate(),
+              month: new Date().getMonth() + 1,
+              year: new Date().getFullYear(),
+              content: content.trim(),
+              title: title.trim(),
+              mood: mood,
+            },
+          ])
+        );
+      } else {
+        localStorage.setItem(
+          "diary",
+          JSON.stringify([
+            {
+              date: new Date().getDate(),
+              month: new Date().getMonth() + 1,
+              year: new Date().getFullYear(),
+              content: content.trim(),
+              title: title.trim(),
+              mood: mood,
+            },
+          ])
+        );
+      }
+
+      setContent("");
+      setMood(moods[0]);
+      setTitle("");
+    }
+  };
+
   return (
     <div className={clsx(style.wrapper)}>
       <input
         type="text"
         placeholder="Ngày hôm nay của bạn như thế nào?"
-        value={title}
+        value={
+          title === "" ? "" : title[0].toUpperCase().concat(title.slice(1))
+        }
         onChange={(e) => setTitle(e.target.value)}
         spellCheck="false"
         ref={inputRef}
@@ -36,51 +78,21 @@ const CreateDiary = () => {
         })}
       </div>
       <textarea
-        value={content}
+        value={
+          content === ""
+            ? ""
+            : content[0].toUpperCase().concat(content.slice(1))
+        }
         onChange={(e) => setContent(e.target.value)}
         spellCheck="false"
         placeholder="Nhập nội dung"
-      ></textarea>
-      <button
-        onClick={() => {
-          if (!!localStorage.getItem("diary")) {
-            localStorage.setItem(
-              "diary",
-              JSON.stringify([
-                ...JSON.parse(localStorage.getItem("diary")),
-                {
-                  date: new Date().getDate(),
-                  month: new Date().getMonth() + 1,
-                  year: new Date().getFullYear(),
-                  content: content,
-                  title: title,
-                  mood: mood,
-                },
-              ])
-            );
-          } else {
-            localStorage.setItem(
-              "diary",
-              JSON.stringify([
-                {
-                  date: new Date().getDate(),
-                  month: new Date().getMonth() + 1,
-                  year: new Date().getFullYear(),
-                  content: content,
-                  title: title,
-                  mood: mood,
-                },
-              ])
-            );
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            handleSubmit();
           }
-
-          setContent("");
-          setMood(moods[0]);
-          setTitle("");
         }}
-      >
-        OK
-      </button>
+      ></textarea>
+      <button onClick={handleSubmit}>OK</button>
     </div>
   );
 };

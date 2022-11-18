@@ -12,31 +12,33 @@ const CreateMemory = () => {
   // const [contents,setContents] = useState([])
 
   const handleSubmit = () => {
-    if (!!localStorage.getItem("memories")) {
-      localStorage.setItem(
-        "memories",
-        JSON.stringify([
-          ...JSON.parse(localStorage.getItem("memories")),
-          {
-            title: title,
-            content: content,
-          },
-        ])
-      );
-    } else {
-      localStorage.setItem(
-        "memories",
-        JSON.stringify([
-          {
-            title: title,
-            content: content,
-          },
-        ])
-      );
-    }
+    if (title.trim() !== "" && content.trim() !== "") {
+      if (!!localStorage.getItem("memories")) {
+        localStorage.setItem(
+          "memories",
+          JSON.stringify([
+            ...JSON.parse(localStorage.getItem("memories")),
+            {
+              title: title.trim(),
+              content: content.trim(),
+            },
+          ])
+        );
+      } else {
+        localStorage.setItem(
+          "memories",
+          JSON.stringify([
+            {
+              title: title.trim(),
+              content: content.trim(),
+            },
+          ])
+        );
+      }
 
-    setContent("");
-    setTitle("");
+      setContent("");
+      setTitle("");
+    }
   };
   return (
     <div className={clsx(style.wrapper)}>
@@ -52,10 +54,19 @@ const CreateMemory = () => {
       />
 
       <textarea
-        value={content}
+        value={
+          content === ""
+            ? ""
+            : content[0].toUpperCase().concat(content.slice(1))
+        }
         onChange={(e) => setContent(e.target.value)}
         spellCheck="false"
         placeholder="Ví dụ : lúc bạn đỗ ĐH sẽ ntn?hay kênh youtube đạt 100 sub ,...."
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            handleSubmit();
+          }
+        }}
       ></textarea>
       <button onClick={handleSubmit}>OK</button>
     </div>

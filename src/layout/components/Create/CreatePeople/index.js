@@ -1,9 +1,11 @@
 import { useState, useRef, useEffect } from "react";
 import clsx from "clsx";
 import style from "./CreatePeople.module.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const CreatePeople = () => {
-    const [title, setTitle] = useState("");
+  const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [nickname, setNickname] = useState("");
   const [linkImage, setLinkImage] = useState("");
@@ -14,57 +16,87 @@ const CreatePeople = () => {
   const [diary, setDiary] = useState("");
   const [timelapse, setTimelapse] = useState([]);
 
-
   const inputRef = useRef();
-  const personRef = useRef()
+  const personRef = useRef();
+  const timelapseRef = useRef();
+
+  useEffect(() => {
+    personRef.current.focus();
+  }, [personalityItem]);
+  useEffect(() => {
+    timelapseRef.current.focus();
+  }, [time]);
   useEffect(() => {
     inputRef.current.focus();
   }, [title]);
-  useEffect(() => {
-    personRef.current.focus()
-  }, [personalityItem]);
   // const [contents,setContents] = useState([])
 
   const handleSubmit = () => {
-    if (!!localStorage.getItem("characters")) {
-      localStorage.setItem(
-        "characters",
-        JSON.stringify([
-          ...JSON.parse(localStorage.getItem("characters")),
-          {
-            title: title,
-            content: content,
-            nickname:nickname,
-            linkImage:linkImage,
-            personalities:personalityList,
-            timelapse:timelapse
-          },
-        ])
-      );
-    } else {
-      localStorage.setItem(
-        "characters",
-        JSON.stringify([
-          {
-            title: title,
-            content: content,
-            nickname:nickname,
-            linkImage:linkImage,
-            personalities:personalityList,
-            timelapse:timelapse
-          },
-        ])
-      );
+    if (
+      title.trim() !== "" &&
+      content.trim() !== "" &&
+      nickname.trim() !== ""
+    ) {
+      if (!!localStorage.getItem("characters")) {
+        localStorage.setItem(
+          "characters",
+          JSON.stringify([
+            ...JSON.parse(localStorage.getItem("characters")),
+            {
+              title: title.trim(),
+              content: content.trim(),
+              nickname: nickname.trim(),
+              linkImage:
+                linkImage === ""
+                  ? "https://i.pinimg.com/564x/6e/08/97/6e08971bc765d9ec11a9a3d259875dd3.jpg"
+                  : linkImage.trim(),
+              personalities: personalityList,
+              timelapse: timelapse,
+            },
+          ])
+        );
+      } else {
+        localStorage.setItem(
+          "characters",
+          JSON.stringify([
+            {
+              title: title.trim(),
+              content: content.trim(),
+              nickname: nickname.trim(),
+              linkImage:
+                linkImage === ""
+                  ? "https://i.pinimg.com/564x/6e/08/97/6e08971bc765d9ec11a9a3d259875dd3.jpg"
+                  : linkImage.trim(),
+              personalities: personalityList,
+              timelapse: timelapse,
+            },
+          ])
+        );
+      }
+      setContent("");
+      setTitle("");
+      setNickname("");
+      setLinkImage("");
+      setDiary("");
+      setTime("");
+      setTimelapse([]);
+      setPersonalityItem("");
+      setPersonalityList([]);
     }
-    setContent("");
-    setTitle("");
-    setNickname("")
-    setLinkImage("")
-    setDiary("")
-    setTime("")
-    setTimelapse([])
-    setPersonalityItem("")
-    setPersonalityList([])
+  };
+
+  const handlePersonality = () => {
+    if (personalityItem.trim() !== "") {
+      setPersonalityList((prev) => [...prev, personalityItem]);
+      setPersonalityItem("");
+    }
+  };
+
+  const handleDelete = (index) => {
+    const a1 = personalityList.slice(0, index);
+    const a2 = personalityList.slice(index + 1, personalityList.length);
+    const new_arr = a1.concat(a2);
+    setPersonalityList(new_arr);
   };
   return (
     <div className={clsx(style.wrapper)}>
@@ -80,9 +112,11 @@ const CreatePeople = () => {
       />
       <input
         type="text"
-        placeholder="Đặt biệt danh cho nó"
+        placeholder="Đặt biệt danh"
         value={
-          nickname === "" ? "" : nickname[0].toUpperCase().concat(nickname.slice(1))
+          nickname === ""
+            ? ""
+            : nickname[0].toUpperCase().concat(nickname.slice(1))
         }
         onChange={(e) => setNickname(e.target.value)}
         spellCheck="false"
@@ -94,52 +128,118 @@ const CreatePeople = () => {
         onChange={(e) => setLinkImage(e.target.value)}
         spellCheck="false"
       />
+      <img
+        style={{
+          display: "flex",
+          margin: "0 auto",
+          width: "300px",
+          height: "400px",
+          backgroundColor: "black",
+          color: "white",
+        }}
+        src={
+          linkImage === ""
+            ? "https://i.pinimg.com/564x/6e/08/97/6e08971bc765d9ec11a9a3d259875dd3.jpg"
+            : linkImage
+        }
+        alt="Ảnh bị lỗi"
+      />
       <input
         type="text"
         placeholder="Nhập tính cách,mô tả về họ"
         value={
-          personalityItem === "" ? "" : personalityItem[0].toUpperCase().concat(personalityItem.slice(1))
+          personalityItem === ""
+            ? ""
+            : personalityItem[0].toUpperCase().concat(personalityItem.slice(1))
         }
         onChange={(e) => setPersonalityItem(e.target.value)}
         spellCheck="false"
         ref={personRef}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            handlePersonality();
+          }
+        }}
       />
-      <button onClick={()=>{
-        setPersonalityList(prev=>[...prev,personalityItem])
-        setPersonalityItem("")
-      }}>Add</button>
-      {personalityList.map((x,index)=>{
-        return(
-            <p key={index}>{x}</p>
-        )
+      <button onClick={handlePersonality}>Add</button>
+      {personalityList.map((x, index) => {
+        return (
+          <div style={{ display: "flex" }}>
+            <p className={clsx(style.personItem)} key={index}>
+              {x}
+            </p>
+            <div
+              className={clsx(style.trash)}
+              onClick={() => {
+                handleDelete(index);
+              }}
+            >
+              <FontAwesomeIcon icon={faTrash} />
+            </div>
+          </div>
+        );
       })}
 
-        <input
+      <input
         type="text"
         placeholder="Mốc thời gian"
         value={time}
         onChange={(e) => setTime(e.target.value)}
         spellCheck="false"
+        ref={timelapseRef}
       />
-      <input
+      <textarea
         type="text"
         placeholder="Chuyện gì đã xảy trong thời gian đó"
         value={diary}
         onChange={(e) => setDiary(e.target.value)}
         spellCheck="false"
-      />
-      <button onClick={()=>{
-        setTimelapse(prev=>[...prev,{time:time,diary:diary}])
-        setTime("")
-        setDiary("")
-      }}>Add</button>
-        {timelapse.map((x,index)=>{
-        return(
-            <div key={index}>
-                <p>{x.time}</p>
-                <p>{x.diary}</p>
-            </div>
-        )
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            if (time.trim() !== "" && diary.trim() !== "") {
+              setTimelapse((prev) => [...prev, { time: time, diary: diary }]);
+              setTime("");
+              setDiary("");
+            }
+          }
+        }}
+      ></textarea>
+      <button
+        onClick={() => {
+          if (time.trim() !== "" && diary.trim() !== "") {
+            setTimelapse((prev) => [...prev, { time: time, diary: diary }]);
+            setTime("");
+            setDiary("");
+          }
+        }}
+      >
+        Add
+      </button>
+      {timelapse.map((x, index) => {
+        return (
+          <div
+            key={index}
+            style={{
+              border: "1px solid black",
+              borderRadius: "20px",
+              marginBottom: "10px",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "30px",
+                textAlign: "center",
+                fontWeight: "600",
+                borderBottom: "1px solid black",
+              }}
+            >
+              {x.time}
+            </p>
+            <p style={{ fontSize: "25px", fontWeight: "500", padding: "20px" }}>
+              {x.diary}
+            </p>
+          </div>
+        );
       })}
 
       <textarea
@@ -151,6 +251,6 @@ const CreatePeople = () => {
       <button onClick={handleSubmit}>OK</button>
     </div>
   );
-}
- 
+};
+
 export default CreatePeople;

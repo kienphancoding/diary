@@ -30,14 +30,13 @@ const Create = ({setShow}) => {
   ];
   const [type, setType] = useState(elements[0].name);
 
-  
   return (
     <div ref={ref} className={clsx(style.wrapper)}>
       <div style={{display:"flex"}} className={clsx(style.moods)}>
       {elements.map((x, index) => {
         return (
           <div
-            style={type === x.name ? { border: "3px solid black" } : {}}
+            style={type === x.name ? { backgroundColor:"black",color:"white" } : {}}
             key={index}
             onClick={() => setType(x.name)}
             className={clsx(style.moodItem)}
