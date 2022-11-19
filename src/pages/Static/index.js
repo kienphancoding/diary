@@ -1,31 +1,39 @@
 import clsx from "clsx";
-import style from "./Static.module.scss"
+import style from "./Static.module.scss";
 import { moods } from "../../layout/components/Create";
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis,BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 
 const Static = () => {
-    const content = JSON.parse(localStorage.getItem("diary")) ?? [];
+  const content = JSON.parse(localStorage.getItem("diary")) ?? [];
 
-    let staticMoods = moods.map(() => {
-      let array = [];
-      array = [...array, 0];
-      return array[0];
+  let staticMoods = moods.map(() => {
+    let array = [];
+    array = [...array, 0];
+    return array[0];
+  });
+
+  content.map((x) => {
+    return moods.map((y, i) => {
+      if (y === x.mood) {
+        return staticMoods[i]++;
+      }
     });
+  });
 
-    content.map((x) => {
-      return moods.map((y, i) => {
-        if (y === x.mood) {
-          return staticMoods[i]++;
-        }
-      });
-    });
-
-      const data = moods.map((x, index) => {
-        return {
-          name: x,
-          count: staticMoods[index],
-        };
-      });
+  const data = moods.map((x, index) => {
+    return {
+      name: x,
+      count: staticMoods[index],
+    };
+  });
 
   return (
     <div className={clsx(style.wrapper)}>
@@ -43,11 +51,15 @@ const Static = () => {
           }}
           barSize={20}
         >
-          <XAxis dataKey="name" scale="point" padding={{ left: 10, right: 10 }} />
+          <XAxis
+            dataKey="name"
+            scale="point"
+            padding={{ left: 10, right: 10 }}
+          />
           <YAxis />
           <Tooltip />
           <CartesianGrid strokeDasharray="3 3" />
-          <Bar dataKey="count" fill="#000" background={{ fill: '#eee' }} />
+          <Bar dataKey="count" fill="#000" background={{ fill: "#eee" }} />
         </BarChart>
       </ResponsiveContainer>
     </div>

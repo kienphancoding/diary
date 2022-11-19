@@ -8,16 +8,16 @@ import {
   faChartColumn,
   faGear,
   faHouse,
-  faImage,
   faMemory,
   faPeopleArrows,
   faSquarePlus,
   faStar,
+  faTrophy,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import Create from "../Create";
 import Settings from "../Settings";
-import Logo from "./logo192.png"
+import Logo from "./logo192.png";
 
 const Sidebar = () => {
   const [show, setShow] = useState(false);
@@ -41,8 +41,8 @@ const Sidebar = () => {
       name: "Ngày này năm trước",
       icon: faCalendar,
     },
-    
-    { path: "/galery", name: "Thư viện", icon: faImage },
+
+    { path: "/trophy", name: "Thành tích", icon: faTrophy },
     {
       path: "/setting",
       name: "Cài đặt",
@@ -55,7 +55,12 @@ const Sidebar = () => {
   return (
     <div className={clsx(style.wrapper)}>
       <Link to="/" className={clsx(style.linkHome)}>
-        <img width={40} src={Logo} style={{borderRadius:"100px"}} alt="logo" />
+        <img
+          width={40}
+          src={Logo}
+          style={{ borderRadius: "100px" }}
+          alt="logo"
+        />
       </Link>
       {list.map((x, index) => {
         return !x.content ? (
@@ -64,7 +69,11 @@ const Sidebar = () => {
             key={index}
             className={clsx(style.link)}
             data={x.name}
-            style={window.location.pathname===x.path?{backgroundColor:"black",color:"#fff"}:{}}
+            style={
+              window.location.pathname === x.path
+                ? { backgroundColor: "black", color: "#fff" }
+                : {}
+            }
           >
             <FontAwesomeIcon className={clsx(style.icon)} icon={x.icon} />
           </Link>
@@ -75,13 +84,13 @@ const Sidebar = () => {
             className={clsx(style.link)}
             data={x.name}
             onClick={() => {
-              if(show===false){
-                setShow(true)
-                setContent(x.content)
-              }else if(content===x.content){
-                setShow(false)
-              }else{
-                setContent(x.content)
+              if (show === false) {
+                setShow(true);
+                setContent(x.content);
+              } else if (content === x.content) {
+                setShow(false);
+              } else {
+                setContent(x.content);
               }
             }}
           >
@@ -96,7 +105,7 @@ const Sidebar = () => {
             show &&
             content === x.content && (
               <div key={index}>
-                <Element setShow={setShow}/>
+                <Element setShow={setShow} />
               </div>
             )
           );

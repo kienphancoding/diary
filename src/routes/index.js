@@ -1,20 +1,22 @@
 import Home from "../pages/Home";
 import Static from "../pages/Static";
-import Galery from "../pages/Galery";
+import Trophy from "../pages/Trophy";
 import Chapter from "../pages/Chapter";
 import Memory from "../pages/Memory";
 import Momment from "../pages/Momment";
 import Character from "../pages/Character";
 import NotFound from "../pages/NotFound";
+import ThisDayLastYear from "../pages/ThisDayLastYear";
 
 let routes = [
   { path: "/", component: Home },
   { path: "/static", component: Static },
-  { path: "/galery", component: Galery },
+  { path: "/trophy", component: Trophy },
   { path: "/chapter", component: Chapter },
   { path: "/memory", component: Memory },
   { path: "/character", component: Character },
   { path: "/momment", component: Momment },
+  { path: "/thisdaylastyear", component: ThisDayLastYear },
   { path: "*", component: NotFound },
 ];
 

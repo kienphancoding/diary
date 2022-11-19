@@ -1,0 +1,33 @@
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.title{
+    background-color: black;
+    color: white;
+    font-size: 100px;
+    font-weight: 600;
+    padding: 20px;
+    border-radius: 5px;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.list{
+    display: flex;
+    margin-top: 60px;
+}
+
+.item{
+    font-size: 25px;
+    font-weight: 600;
+    border: 2px solid black;
+    padding: 20px;
+    margin: 5px;
+    user-select: none;
+    -webkit-user-select: none;
+}

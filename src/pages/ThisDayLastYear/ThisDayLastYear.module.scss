@@ -1,0 +1,36 @@
+.header {
+  text-align: center;
+  padding: 10px 20px;
+  margin: 10px 30px;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+}
+
+.item {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+  margin: 10px 30px;
+  padding: 10px 15px;
+  .wrapHeader {
+    display: flex;
+    justify-content: space-between;
+    .title,
+    .mood {
+      background-color: black;
+      color: white;
+      font-size: 25px;
+      font-weight: 600;
+      padding: 5px;
+      border-radius: 10px;
+    }
+    .title {
+      width: 100%;
+      margin-right: 10px;
+      text-align: center;
+    }
+  }
+  .content {
+    font-size: 26px;
+    margin: 10px 0;
+  }
+}
