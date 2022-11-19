@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import clsx from "clsx";
 import style from "./CreateChapter.module.scss";
+import { Input_Max_Length } from "../CreateDiary";
 
 const CreateChapter = () => {
   const [title, setTitle] = useState("");
@@ -11,7 +12,11 @@ const CreateChapter = () => {
   }, [title]);
 
   const handleSubmit = () => {
-    if (title.trim() !== "" && content.trim() !== "") {
+    if (
+      title.trim() !== "" &&
+      content.trim() !== "" &&
+      title.trim().length <= Input_Max_Length
+    ) {
       if (!!localStorage.getItem("chapter")) {
         localStorage.setItem(
           "chapter",
@@ -47,10 +52,15 @@ const CreateChapter = () => {
         value={
           title === "" ? "" : title[0].toUpperCase().concat(title.slice(1))
         }
-        onChange={(e) => setTitle(e.target.value)}
+        onChange={(e) => {
+          setTitle(e.target.value);
+        }}
         spellCheck="false"
         ref={inputRef}
       />
+      <p className={clsx(style.maxLength)} style={title.trim().length > Input_Max_Length?{color:"red"}:{}}>
+        {title.trim().length}/{Input_Max_Length}
+      </p>
 
       <textarea
         value={

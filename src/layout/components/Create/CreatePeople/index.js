@@ -30,12 +30,16 @@ const CreatePeople = () => {
     inputRef.current.focus();
   }, [title]);
   // const [contents,setContents] = useState([])
+  const max_length_realname = 40;
+  const max_length_nickname = 40;
 
   const handleSubmit = () => {
     if (
       title.trim() !== "" &&
       content.trim() !== "" &&
-      nickname.trim() !== ""
+      nickname.trim() !== "" &&
+      title.trim().length <= max_length_realname &&
+      nickname.trim().length <= max_length_nickname
     ) {
       if (!!localStorage.getItem("characters")) {
         localStorage.setItem(
@@ -110,6 +114,16 @@ const CreatePeople = () => {
         spellCheck="false"
         ref={inputRef}
       />
+
+      <p
+        className={clsx(style.maxLength)}
+        style={
+          title.trim().length > max_length_realname ? { color: "red" } : {}
+        }
+      >
+        {title.trim().length}/{max_length_realname}
+      </p>
+
       <input
         type="text"
         placeholder="Đặt biệt danh"
@@ -121,6 +135,15 @@ const CreatePeople = () => {
         onChange={(e) => setNickname(e.target.value)}
         spellCheck="false"
       />
+
+      <p
+        className={clsx(style.maxLength)}
+        style={
+          nickname.trim().length > max_length_nickname ? { color: "red" } : {}
+        }
+      >
+        {nickname.trim().length}/{max_length_nickname}
+      </p>
       <input
         type="text"
         placeholder="Dán link ảnh nó vào"
@@ -139,7 +162,7 @@ const CreatePeople = () => {
         }}
         src={
           linkImage === ""
-            ? "https://i.pinimg.com/564x/6e/08/97/6e08971bc765d9ec11a9a3d259875dd3.jpg"
+            ? "https://i.pinimg.com/564x/5d/53/38/5d5338d595f43fdd82dc3ef13761c64e.jpg"
             : linkImage
         }
         alt="Ảnh bị lỗi"
@@ -164,7 +187,7 @@ const CreatePeople = () => {
       <button onClick={handlePersonality}>Add</button>
       {personalityList.map((x, index) => {
         return (
-          <div style={{ display: "flex" }}>
+          <div key={index} style={{ display: "flex" }}>
             <p className={clsx(style.personItem)} key={index}>
               {x}
             </p>

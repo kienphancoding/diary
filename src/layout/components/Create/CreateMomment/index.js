@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import clsx from "clsx";
 import style from "./CreateMomment.module.scss";
+import {Input_Max_Length} from "../CreateDiary"
 
 const CreateMomment = () => {
   const [title, setTitle] = useState("");
@@ -11,7 +12,11 @@ const CreateMomment = () => {
   }, [title]);
 
   const handleSubmit = () => {
-    if (title.trim() !== "" && content.trim() !== "") {
+    if (
+      title.trim() !== "" &&
+      content.trim() !== "" &&
+      title.trim().length <= Input_Max_Length
+    ) {
       if (!!localStorage.getItem("momment")) {
         localStorage.setItem(
           "momment",
@@ -51,6 +56,13 @@ const CreateMomment = () => {
         spellCheck="false"
         ref={inputRef}
       />
+
+      <p
+        className={clsx(style.maxLength)}
+        style={title.trim().length > Input_Max_Length ? { color: "red" } : {}}
+      >
+        {title.trim().length}/{Input_Max_Length}
+      </p>
 
       <textarea
         value={

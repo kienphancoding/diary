@@ -1,29 +1,16 @@
 .item {
-  display: flex;
-  flex-direction: row;
   box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
     rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
-  padding: 15px;
-  margin: 10px;
+  padding: 20px 30px;
+  margin: 10px 30px;
 }
 
 .header {
   display: flex;
-  overflow: initial;
-  overflow-y: hidden;
-  margin-bottom: 20px;
-  &::-webkit-scrollbar {
-    height: 5px;
-    border-radius: 10px;
-    background-color: brown;
-  }
-  &::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color: black;
-  }
+  justify-content: space-between;
 }
 
-.btn{
+.btn {
   cursor: pointer;
   width: 40px;
   height: 40px;
@@ -49,14 +36,60 @@
   }
 }
 
-.title,.content{
-  &::selection{
+.title,
+.content {
+  &::selection {
     background-color: black;
-    color:white;
+    color: white;
   }
 }
-.content{
+.content {
   font-size: 25px;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.menu {
+  display: flex;
+}
+
+.titleHeader {
+  padding: 20px 30px;
+  margin: 10px 30px;
+  text-align: center;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+}
+
+.img {
+  width: 100%;
+  height: 500px;
+  padding: 0 150px;
+}
+
+.text {
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.input {
+  width: 100%;
+  font-size: 25px;
+  font-weight: 600;
+  margin: 0 10px 10px 0;
+  padding: 5px;
+}
+
+.textarea {
+  width: 100%;
+  height: 200px;
+  font-size: 25px;
+  padding: 20px;
+}
+
+.maxLength {
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
 }

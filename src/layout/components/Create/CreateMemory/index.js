@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import clsx from "clsx";
 import style from "./CreateMemory.module.scss";
+import { Input_Max_Length } from "../CreateDiary";
 
 const CreateMemory = () => {
   const [title, setTitle] = useState("");
@@ -12,7 +13,11 @@ const CreateMemory = () => {
   // const [contents,setContents] = useState([])
 
   const handleSubmit = () => {
-    if (title.trim() !== "" && content.trim() !== "") {
+    if (
+      title.trim() !== "" &&
+      content.trim() !== "" &&
+      title.trim().length <= Input_Max_Length
+    ) {
       if (!!localStorage.getItem("memories")) {
         localStorage.setItem(
           "memories",
@@ -52,6 +57,13 @@ const CreateMemory = () => {
         spellCheck="false"
         ref={inputRef}
       />
+
+      <p
+        className={clsx(style.maxLength)}
+        style={title.trim().length > Input_Max_Length ? { color: "red" } : {}}
+      >
+        {title.trim().length}/{Input_Max_Length}
+      </p>
 
       <textarea
         value={

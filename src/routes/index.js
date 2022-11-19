@@ -5,6 +5,7 @@ import Chapter from "../pages/Chapter";
 import Memory from "../pages/Memory";
 import Momment from "../pages/Momment";
 import Character from "../pages/Character";
+import NotFound from "../pages/NotFound";
 
 let routes = [
   { path: "/", component: Home },
@@ -14,7 +15,7 @@ let routes = [
   { path: "/memory", component: Memory },
   { path: "/character", component: Character },
   { path: "/momment", component: Momment },
-  { path: "*", component: Home },
+  { path: "*", component: NotFound },
 ];
 
 let diary;

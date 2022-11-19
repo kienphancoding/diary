@@ -18,12 +18,12 @@ const CharacterHeader = () => {
         return (
           <div style={{ display: "flex", flexDirection: "column" }} key={index}>
             <Link className={clsx(style.link)} to={`/characters${index + 1}`}>
-              <img src={x.linkImage} alt="" />
+              <img src={x.linkImage} alt="Avatar"/>
               <p className={clsx(style.name)}>{x.nickname}</p>
             </Link>
             <div
               className={clsx(style.link)}
-              style={{ display: "flex", justifyContent: "center" }}
+              style={{ display: "flex", justifyContent: "center",marginTop:"15px" }}
               onClick={() => {
                 const storage = JSON.parse(localStorage.getItem("characters"));
                 const a1 = storage.slice(0, index);

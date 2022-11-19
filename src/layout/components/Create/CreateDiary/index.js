@@ -3,6 +3,8 @@ import style from "./CreateDiary.module.scss";
 import { moods } from "../../Create";
 import { useState, useEffect, useRef } from "react";
 
+export const Input_Max_Length = 50;
+
 const CreateDiary = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -13,7 +15,11 @@ const CreateDiary = () => {
   }, [title]);
 
   const handleSubmit = () => {
-    if (title.trim() !== "" && content.trim() !== "") {
+    if (
+      title.trim() !== "" &&
+      content.trim() !== "" &&
+      title.trim().length <= Input_Max_Length
+    ) {
       if (!!localStorage.getItem("diary")) {
         localStorage.setItem(
           "diary",
@@ -63,6 +69,12 @@ const CreateDiary = () => {
         spellCheck="false"
         ref={inputRef}
       />
+      <p
+        className={clsx(style.maxLength)}
+        style={title.trim().length > Input_Max_Length ? { color: "red" } : {}}
+      >
+        {title.trim().length}/{Input_Max_Length}
+      </p>
       <div className={clsx(style.moods)}>
         {moods.map((x, index) => {
           return (

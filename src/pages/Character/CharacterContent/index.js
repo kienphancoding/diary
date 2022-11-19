@@ -17,7 +17,7 @@ const CharacterContent = () => {
                 <img
                   className={clsx(style.img)}
                   src={x.linkImage}
-                  alt={x.nickname}
+                  alt="Avatar"
                 />
                 <div className={clsx(style.info)}>
                   <div className={clsx(style.nickname)}>{x.nickname}</div>
