@@ -63,7 +63,7 @@ const CharacterContent = () => {
             Bạn chưa có người bên cạnh
           </p>
           <img
-            style={{ width: "100%", height: "500px", padding: "0 150px" }}
+            style={{ width: "100%", height: "500px" }}
             alt="Ảnh bìa"
             src="https://i.pinimg.com/564x/70/1c/26/701c26d23e956bca641402e1977170be.jpg"
           />

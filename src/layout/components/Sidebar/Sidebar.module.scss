@@ -65,30 +65,7 @@
     opacity: 1;
   }
 }
-@media (max-width: 770px) {
-  .wrapper {
-    width: 100vw;
-    position: fixed;
-    height: var(--width-sidebar);
-    border-top: 1px solid gray;
-    border-right: none;
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    align-items: center;
-    bottom: 0;
-  }
-  .link{
-    &:hover {
-      &::after {
-        display: none;
-      }
-    }
-  }
-  .linkHome{
-    display: none;
-  }
-}
+
 
 .icon {
   display: flex;

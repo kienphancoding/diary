@@ -51,7 +51,6 @@ const ContentHome = ({ month, year }) => {
     if (titleEdit.trim().length <= Input_Max_Length) {
       //thay doi giao dien
       setIsEdit(false);
-
       //thay doi du lieu trong storage
       const storage = JSON.parse(localStorage.getItem("diary")) ?? [];
       storage[index].title = titleEdit;
@@ -67,8 +66,6 @@ const ContentHome = ({ month, year }) => {
           return isEdit && indexItem === index ? (
             <div className={clsx(style.item)} key={index}>
               <div className={clsx(style.header)}>
-                {/* <div className={clsx(style.date)}>{x.date}</div> */}
-                {/* <div className={clsx(style.title)}>{x.title}</div> */}
                 <input
                   value={titleEdit}
                   onChange={(e) => setTitleEdit(e.target.value)}

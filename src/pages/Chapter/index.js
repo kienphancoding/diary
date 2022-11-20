@@ -40,14 +40,16 @@ const Chapter = () => {
   };
 
   const handleSave = () => {
-    //thay doi giao dien
-    setIsEdit(false);
+    if (titleEdit !== "" && contentEdit !== "") {
+      //thay doi giao dien
+      setIsEdit(false);
 
-    //thay doi du lieu trong storage
-    const storage = JSON.parse(localStorage.getItem("chapter"));
-    storage[indexChapter].title = titleEdit;
-    storage[indexChapter].content = contentEdit;
-    localStorage.setItem("chapter", JSON.stringify(storage));
+      //thay doi du lieu trong storage
+      const storage = JSON.parse(localStorage.getItem("chapter"));
+      storage[indexChapter].title = titleEdit;
+      storage[indexChapter].content = contentEdit;
+      localStorage.setItem("chapter", JSON.stringify(storage));
+    }
   };
 
   return (
@@ -72,7 +74,7 @@ const Chapter = () => {
             Bạn hiện chưa viết tự truyện cho bản thân
           </p>
           <img
-            style={{ width: "100%", height: "500px", padding: "0 150px" }}
+            className={clsx(style.img)}
             alt="Ảnh bìa"
             src="https://i.pinimg.com/564x/df/98/ba/df98baf627d3ad9afae03772e8b86fa2.jpg"
           />
@@ -86,7 +88,7 @@ const Chapter = () => {
         window.location.pathname === "/chapter" && (
           <div style={{ display: "flex", justifyContent: "center" }}>
             <img
-              style={{ width: "50%" }}
+              style={{ width: "100%" }}
               src="https://i.pinimg.com/564x/f4/b7/c4/f4b7c400df26e82d5875d1eab968cb7a.jpg"
               alt="Anh jisoo"
             />

@@ -60,6 +60,10 @@
   text-overflow: ellipsis;
 }
 
+.title{
+  overflow: hidden;
+}
+
 .titleHeader{
   font-size: 30px;
   font-weight: 600;
@@ -86,4 +90,25 @@
     border-radius: 10px;
     padding: 20px;
   }
+}
+
+@media (max-width:480px) {
+  .itemContent{
+    padding: 20px 5px;
+    margin: 10px;
+    input{
+      font-size: 20px;
+    }
+    textarea{
+      font-size: 20px;
+    }
+  }
+  .title,.content{
+    font-size: 20px;
+  }
+}
+
+.img{
+  width: 100%;
+  height: 500px;
 }

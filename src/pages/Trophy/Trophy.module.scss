@@ -15,11 +15,13 @@
     border-radius: 5px;
     user-select: none;
     -webkit-user-select: none;
+    text-align: center;
 }
 
 .list{
     display: flex;
     margin-top: 60px;
+    flex-wrap: wrap;
 }
 
 .item{

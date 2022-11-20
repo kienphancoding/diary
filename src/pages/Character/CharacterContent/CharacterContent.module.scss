@@ -3,8 +3,16 @@
 }
 .header {
   display: flex;
-  max-height: 400px;
+  min-height: 400px;
   margin-bottom: 20px;
+}
+@media (max-width:480px) {
+  .header {
+    flex-direction: column;
+  }
+  .wrapper{
+    padding: 20px 0;
+  }
 }
 .info {
   overflow: auto;

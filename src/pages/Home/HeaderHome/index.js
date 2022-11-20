@@ -44,9 +44,9 @@ const HeaderHome = () => {
         </div>
       ) : (
         <div>
-          <p style={{fontSize:"30px",fontWeight:"600",textAlign:"center"}}>Bạn hiện chưa có nhật kí nào</p>
-          <img style={{width:"100%",height:"500px",padding:"0 150px"}} alt="Ảnh bìa" src="https://i.pinimg.com/564x/3c/2d/2e/3c2d2e65ecbc0604957e94c1f2c3a3d1.jpg"/>
-          <p style={{fontSize:"30px",fontWeight:"600",textAlign:"center"}}>Hãy tạo nhật kí ngày hôm nay</p>
+          <p className={clsx(style.title)}>Bạn hiện chưa có nhật kí nào</p>
+          <img className={clsx(style.img)} alt="Ảnh bìa" src="https://i.pinimg.com/564x/3c/2d/2e/3c2d2e65ecbc0604957e94c1f2c3a3d1.jpg"/>
+          <p className={clsx(style.title)}>Hãy tạo nhật kí ngày hôm nay</p>
         </div>
       )}
     </div>

@@ -68,3 +68,14 @@
     padding: 5px 20px;
   }
 }
+
+@media (max-width:480px) {
+  .wrapper{
+    .moods{
+      .moodItem{
+        font-size: 20px;
+        padding: 5px;
+      }
+    }
+  }
+}
